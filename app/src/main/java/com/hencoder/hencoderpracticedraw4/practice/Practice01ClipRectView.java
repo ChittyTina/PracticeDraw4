@@ -29,6 +29,17 @@ public class Practice01ClipRectView extends View {
 
     {
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.maps);
+
+         /*
+            看了视频后，发现 Camera x y z 各轴的旋转方向 是有规律可循的。
+            给大家分享一个方便记忆 Camera x y z 各轴的旋转方向 的通用方法：
+            伸出你的右手，大拇指翘起，四指回握，摆出手动赞👍的手势。
+            然后大拇指朝着某一坐标轴（如 x 轴）的 负方向，
+            此时四指的回握方向即是该坐标轴的旋转方向。
+            小伙伴们，赶快对照着视频中 Camera x y z 各轴的旋转方向示意图，试试吧～
+         */
+
+
     }
 
     @Override
@@ -38,6 +49,11 @@ public class Practice01ClipRectView extends View {
         int left = (getWidth() - bitmap.getWidth()) / 2;
         int top = (getHeight() - bitmap.getHeight()) / 2;
 
+        canvas.save();
+        canvas.clipRect(left + bitmap.getWidth()/8,top + bitmap.getHeight()/4,left + bitmap.getWidth()/8 *7,top+bitmap.getHeight()/4 *3);
         canvas.drawBitmap(bitmap, left, top, paint);
+        canvas.restore();
+
+
     }
 }
